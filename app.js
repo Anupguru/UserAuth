@@ -3,11 +3,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 require('dotenv').config();
-const { createUserTable } = require('./models/userModels');
-
+const { createUserTable } = require('./models/userModel');
+const { createFoodTable } = require('./models/foodModel');
+const adminRoutes = require('./routes/adminRoutes');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
-app.use(express.static('public/CSS'));
 const PORT = process.env.PORT || 3000;
 
 
@@ -18,7 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: process.env.SESSION_SECRET || 'secretkey',
-  resave: false,
+resave: false,
   saveUninitialized: true,
 }));
 
@@ -29,16 +31,16 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 // Routes
-// const adminRoutes = require('./routes/adminRoutes');
-const authRoutes = require('./routes/authRoutes');
-// const userRoutes = require('./routes/userRoutes');
 app.use('/', authRoutes);
-// app.use('/', adminRoutes);
-// app.use('/', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/user', userRoutes);
+
 
 
 // Schema creation
-createUserTable(); // Call this after setting up middlewares
+createUserTable(); 
+createFoodTable();
+
 
 
 // Server
