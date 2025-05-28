@@ -7,10 +7,7 @@ const db = pgp({
   port: 5432,
   database: process.env.DB_NAME,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  ssl: {
-    rejectunauthorized: false
-  }
+  password: process.env.DB_PASS
 });
 
 
