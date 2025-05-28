@@ -12,6 +12,9 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+  res.send('Server is working!');
+});
 
 // Middlewares
 app.use(express.urlencoded({ extended: false }));

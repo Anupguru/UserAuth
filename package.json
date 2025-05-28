@@ -4,9 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "nodemon app.js",
-  "start": "node app.js"
-},
+    "start": "node app.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Anupguru/UserAuth.git"
@@ -17,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Anupguru/UserAuth/issues"
   },
-  "homepage": "https://github.com/Anupguru/UserAuth#readme"
+  "homepage": "https://github.com/Anupguru/UserAuth#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
